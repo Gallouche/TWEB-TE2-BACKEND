@@ -1,17 +1,26 @@
 {
-  "name": "backend",
-  "version": "0.0.0",
-  "private": true,
+  "name": "github-analytics-light",
+  "version": "1.0.0",
+  "description": "Single page app Github analytics light",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node app.js",
+    "dev": "nodemon --watch app.js --watch routes --watch model",
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.4"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.9",
-    "express": "~4.16.0",
-    "http-errors": "~1.6.2",
-    "jade": "~1.11.0",
-    "morgan": "~1.9.0",
-    "nodemon": "^1.18.9"
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.2"
   }
 }
