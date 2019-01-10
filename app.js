@@ -8,7 +8,7 @@ const users = require('./routes/users');
 const config = require('./config');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3030;
 
 app.use(cors({ origin: '*' }));
 
@@ -28,33 +28,33 @@ app.post('/signin', (req, res, next) => { // eslint-disable-line no-unused-vars
   });
 });
 
+// JWT verification
+// app.use((req, res, next) => {
+//   const token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+//   if (token) {
+//     jwt.verify(token, app.get('secret'), (err, decoded) => {
+//       if (err) {
+//         return res.json({ success: false, message: 'Failed to authenticate token.' });
+//       }
+//       req.decoded = decoded;
+//       return next();
+//     });
+//   } else {
+//     return res.status(403).send({
+//       success: false,
+//       message: 'No token provided.',
+//     });
+//   }
+// });
+
+// Register routes
+app.use('/users', users);
+
 // Server the index.html file for all other routes
 app.get('*', (req, res) => {
   res.send('Welcome to this marvelous backend !');
 });
-
-// JWT verification
-app.use((req, res, next) => {
-  const token = req.body.token || req.query.token || req.headers['x-access-token'];
-
-  if (token) {
-    jwt.verify(token, app.get('secret'), (err, decoded) => {
-      if (err) {
-        return res.json({ success: false, message: 'Failed to authenticate token.' });
-      }
-      req.decoded = decoded;
-      return next();
-    });
-  } else {
-    return res.status(403).send({
-      success: false,
-      message: 'No token provided.',
-    });
-  }
-});
-
-// Register routes
-app.use('/users', users);
 
 // Forward 404 to error handler
 app.use((req, res, next) => { // eslint-disable-line no-unused-vars

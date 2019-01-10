@@ -9,11 +9,25 @@ mongoose.connect(process.env.MONGODB_URI);
 
 /* GET users listing. */
 router.get('/', (req, res, next) => { // eslint-disable-line no-unused-vars
-  res.send('respond with  resource');
+  UserModel.findOne({ email: 'jean-pierre@gamil.com' }, (err, user) => {
+    if (err) {
+      const error = new Error('Error while getting user');
+      error.status = 500;
+      return next(error);
+    }
+    if (user) {
+      res.send(user);
+    } else {
+      const error = new Error('No user found');
+      error.status = 500;
+      next(error);
+    }
+  });
 });
 
 router.post('/', (req, res, next) => { // eslint-disable-line no-unused-vars
   UserModel.find({ email: req.body.email }, (err, doc) => {
+    console.log(req.body)
     if (doc.length) {
       const error = new Error('User already exist');
       error.status = 500;
