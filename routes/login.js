@@ -15,7 +15,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 mongoose.set('useCreateIndex', true);
 
 router.get('/', (req, res, next) => { // eslint-disable-line no-unused-vars
-  res.send('login');
+  res.sendFile('./../views/login.html');
 });
 
 router.post('/', (req, res, next) => { // eslint-disable-line no-unused-vars
