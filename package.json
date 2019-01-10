@@ -1,7 +1,8 @@
 {
-  "name": "github-analytics-light",
+  "name": "tweb-te2-backend",
   "version": "1.0.0",
-  "description": "Single page app Github analytics light",
+  "description": "Backend with rest API and mongoDB for TWEB TE2",
+  "author": "Théo Gallandat",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -17,6 +18,7 @@
     "nodemon": "^1.18.4"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "express": "^4.16.3",

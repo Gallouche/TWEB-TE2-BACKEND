@@ -5,9 +5,19 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const userModelSchema = new Schema({
-  email: String,
-  firstName: String,
-  lastName: String,
+  username: {
+    type: String,
+    unique: true,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  watchlist: {
+    type: Array,
+    default: [],
+  },
 });
 
 
